@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProjectList from '../../components/ProjectList.astro';
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Projects" description="Embedded and hardware projects: ESP32-S3 firmware, LoRa radio, and custom PCBs, with build notes and source code.">
+  <h1>Projects</h1>
+  <p class="lead">Each project page covers what it does, who it helps, how it works, and the design decisions behind it.</p>
+  <ProjectList projects={projects} showTech />
+</Base>

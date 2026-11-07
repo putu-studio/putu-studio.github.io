@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { SITE } from '../../site.config';
+import { statusLabel } from '../../status';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+const { project } = Astro.props;
+const { Content } = await render(project);
+const p = project.data;
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+// Structured data so search engines know this page describes a project.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': p.repo ? 'SoftwareSourceCode' : 'CreativeWork',
+  name: p.title,
+  description: p.description,
+  author: { '@type': 'Person', url: SITE.github },
+  dateCreated: p.started.toISOString(),
+  dateModified: p.updated.toISOString(),
+  keywords: p.tags.join(', '),
+  ...(p.cover ? { image: new URL(p.cover, SITE.url).toString() } : {}),
+  ...(p.repo ? { codeRepository: p.repo, programmingLanguage: 'C' } : {}),
+};
+---
+<Base title={p.title} description={p.description} type="article" image={p.cover} jsonLd={jsonLd}>
+  <p class="meta"><a href="/projects/">← All projects</a></p>
+  <h1>{p.title}</h1>
+  <p class="lead">{p.detail}</p>
+  <p class="meta">{statusLabel(p)} · updated {fmt(p.updated)} · {p.tags.join(' · ')}{p.repo && <> · <a href={p.repo}>source code</a></>}{p.hardware && <> · <a href={p.hardware}>hardware files</a></>}</p>
+  {p.cover && <figure><img src={p.cover} alt={p.coverAlt ?? ''} /></figure>}
+  <hr />
+  <article><Content /></article>
+</Base>

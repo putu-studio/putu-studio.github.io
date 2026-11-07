@@ -1,0 +1,15 @@
+---
+import { SITE } from '../site.config';
+---
+<footer>
+  <div class="wrap">
+    <p>Licenses: MIT (firmware, software and hardware design files). Site text and images: all rights reserved.</p>
+    <p><a href={SITE.github} rel="me">GitHub</a> · <a href="/rss.xml">RSS</a></p>
+  </div>
+</footer>
+<style>
+  footer { border-top: 1px solid var(--rule); margin-top: 80px; padding: 28px 0 48px; font-family: var(--font-ui); font-size: 0.85rem; color: var(--muted); }
+  footer p { margin: 0 0 4px; }
+  a { color: var(--muted); }
+  a:hover { color: var(--accent); }
+</style>

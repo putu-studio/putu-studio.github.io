@@ -1,0 +1,26 @@
+---
+import { SITE } from '../site.config';
+const path = Astro.url.pathname;
+const links = [
+  { href: '/projects/', label: 'Projects' },
+  { href: '/blog/', label: 'Blog' },
+];
+---
+<header>
+  <div class="wrap bar">
+    <a class="name" href="/">{SITE.name}</a>
+    <nav aria-label="Main">
+      {links.map((l) => <a href={l.href} aria-current={path.startsWith(l.href) ? 'page' : undefined}>{l.label}</a>)}
+      <a href={SITE.github} rel="me">GitHub</a>
+    </nav>
+  </div>
+</header>
+<style>
+  header { border-bottom: 1px solid var(--rule); background: var(--bg); }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; justify-content: space-between; padding-top: 20px; padding-bottom: 20px; font-family: var(--font-ui); }
+  .name { font-weight: 700; font-size: 1.05rem; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+  nav { display: flex; gap: 22px; flex-wrap: wrap; font-size: 0.92rem; }
+  nav a { color: var(--muted); text-decoration: none; padding-bottom: 2px; border-bottom: 2px solid transparent; }
+  nav a:hover { color: var(--text); }
+  nav a[aria-current='page'] { color: var(--text); border-bottom-color: var(--accent); }
+</style>

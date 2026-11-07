@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { SITE } from '../../site.config';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', (p) => !p.data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: d.title,
+  description: d.description,
+  datePublished: d.date.toISOString(),
+  author: { '@type': 'Person', url: SITE.github },
+  ...(d.cover ? { image: new URL(d.cover, SITE.url).toString() } : {}),
+};
+---
+<Base title={d.title} description={d.description} type="article" published={d.date} image={d.cover} jsonLd={jsonLd}>
+  <p class="meta"><a href="/blog/">← All posts</a></p>
+  <h1>{d.title}</h1>
+  <p class="meta">{d.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
+  <figure class="cover">
+    {d.cover
+      ? <img src={d.cover} alt={d.coverAlt ?? ''} />
+      : <div class="placeholder">photo coming soon</div>}
+  </figure>
+  <article><Content /></article>
+  {d.project && <p class="meta"><a href={`/projects/${d.project}/`}>Read more about this project →</a></p>}
+</Base>
+<style>
+  .cover { margin: 1.2em 0 1.6em; }
+  .cover img { width: 100%; border-radius: 10px; border: 1px solid var(--rule); }
+  .placeholder { aspect-ratio: 16 / 7; border-radius: 10px; background: var(--code-bg); display: grid; place-items: center; font-family: var(--font-ui); font-size: 0.85rem; color: var(--muted); }
+</style>
