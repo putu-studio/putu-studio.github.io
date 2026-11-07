@@ -5,6 +5,8 @@ detail: A wearable built on the XIAO ESP32-S3 Sense, using its on-board micropho
 description: Wearable AI pin on a XIAO ESP32-S3 Sense with a custom KiCad carrier PCB (TP4056 LiPo charger, USB-C, TVS protection, battery sensing), made by JLCPCB.
 status: in progress
 order: 2
+repo: https://github.com/putu-studio/AI_Pin
+hardware: https://github.com/putu-studio/AI_Pin/tree/main/hardware
 tags: [ESP32-S3 Sense, KiCad, PCB, TP4056, JLCPCB]
 started: 2026-08-01
 updated: 2026-10-15
