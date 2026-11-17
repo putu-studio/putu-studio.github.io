@@ -29,10 +29,15 @@ const jsonLd = {
 ---
 <Base title={p.title} description={p.description} type="article" image={p.cover} jsonLd={jsonLd}>
   <p class="meta"><a href="/projects/">← All projects</a></p>
-  <h1>{p.title}</h1>
+  <h1 class:list={{ 'with-logo': p.logo }}>{p.logo && <img src={p.logo} alt="" width="44" height="44" />}{p.title}</h1>
   <p class="lead">{p.detail}</p>
   <p class="meta">{statusLabel(p)} · updated {fmt(p.updated)} · {p.tags.join(' · ')}{p.repo && <> · <a href={p.repo}>source code</a></>}{p.hardware && <> · <a href={p.hardware}>hardware files</a></>}</p>
-  {p.cover && <figure><img src={p.cover} alt={p.coverAlt ?? ''} /></figure>}
+  {p.alsoRuns && <p class="meta">Also runs: {p.alsoRuns.join(' · ')}</p>}
+  {(p.hero ?? p.cover) && <figure><img src={p.hero ?? p.cover} alt={p.coverAlt ?? ''} /></figure>}
   <hr />
   <article><Content /></article>
 </Base>
+<style>
+  h1.with-logo { display: flex; align-items: center; gap: 14px; }
+  h1.with-logo img { width: 44px; height: 44px; border-radius: 10px; flex: none; }
+</style>

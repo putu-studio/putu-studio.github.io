@@ -17,6 +17,9 @@ const projects = defineCollection({
     hardware: z.string().optional(),  // link to the published KiCad files; adds "hardware available"
     cover: z.string().optional(),     // photo path under /public
     coverAlt: z.string().optional(),
+    hero: z.string().optional(),      // picture or animation at the top of the project page; cards keep `cover`
+    logo: z.string().optional(),      // small project logo shown beside the title
+    alsoRuns: z.array(z.string()).optional(),   // other firmware the same hardware can run
     started: z.coerce.date(),
     updated: z.coerce.date(),
   }),

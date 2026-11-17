@@ -7,6 +7,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://putu-studio.github.io',
   integrations: [sitemap()],
+  // The project page was renamed. Keep the old address working.
+  redirects: {
+    '/projects/lora-convoy-chat': '/projects/freemesh/',
+  },
   markdown: {
     shikiConfig: { theme: 'github-dark-dimmed' },
   },
