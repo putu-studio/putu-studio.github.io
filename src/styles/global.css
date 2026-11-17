@@ -1,25 +1,19 @@
-/* Calm and readable: warm paper colors, a book-style serif for reading,
-   a clean sans for headings, one muted accent. */
+/* Dark and quiet: shades of black on black, a book-style serif for reading,
+   a clean sans for headings, and a soft grey instead of a colour accent. */
 :root {
-  --bg: #faf8f4;
-  --surface: #ffffff;
-  --text: #22201c;
-  --muted: #6d675e;
-  --rule: #e8e3d9;
-  --accent: #2f6f62;          /* deep teal-green, like a PCB solder mask */
-  --accent-soft: #e6f0ec;
-  --code-bg: #f1ede5;
+  --bg: #0a0a0b;
+  --surface: #121214;
+  --text: #e6e4df;
+  --muted: #8e8b85;
+  --rule: #242427;
+  --accent: #bdbab3;          /* links and labels: light grey, no colour */
+  --accent-soft: #2a2a2e;
+  --code-bg: #17171a;
   --max: 740px;
   --font-body: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   --font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1a1917; --surface: #22211e; --text: #ebe7df; --muted: #a39d92; --rule: #34322d;
-    --accent: #7cc4b2; --accent-soft: #24332f; --code-bg: #2a2925; color-scheme: dark;
-  }
+  color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }

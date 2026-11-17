@@ -9,7 +9,9 @@ repo: https://github.com/putu-studio/AI_Pin
 hardware: https://github.com/putu-studio/AI_Pin/tree/main/hardware
 tags: [ESP32-S3 Sense, KiCad, PCB, TP4056, JLCPCB]
 started: 2026-08-01
-updated: 2026-10-15
+updated: 2026-11-17
+cover: /images/ai-pin/ai-pin-concept.png
+coverAlt: Concept drawing of the AI pin. A small dark device with a screen that shows a short answer, one round button, a microphone hole, a USB-C port and a clip. It is a drawing, not a photo of the real device.
 ---
 
 ## What it does
