@@ -26,7 +26,7 @@ const jsonLd = {
   <p class="meta">{d.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
   <figure class="cover">
     {d.cover
-      ? <img src={d.cover} alt={d.coverAlt ?? ''} />
+      ? <img src={d.hero ?? d.cover} alt={d.coverAlt ?? ''} />
       : <div class="placeholder">photo coming soon</div>}
   </figure>
   <article><Content /></article>

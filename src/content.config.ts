@@ -34,6 +34,7 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     project: z.string().optional(),
     cover: z.string().optional(),     // picture shown with the post; "photo coming soon" if missing
+    hero: z.string().optional(),      // picture or animation at the top of the post; lists keep `cover`
     coverAlt: z.string().optional(),
     draft: z.boolean().default(false),
   }),

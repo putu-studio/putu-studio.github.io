@@ -60,6 +60,17 @@ The page works in light and dark mode and uses the phone's own fonts, so nothing
 
 Voice clips are compressed with Codec2 before they go on the air, because a LoRa link carries very little data.
 
+## How the network lock works
+
+![Two boxes that share a passphrase hold the same key. A message is locked before it goes on the air, a box without the passphrase sees only scrambled bytes, and the box with the key opens it.](/images/freemesh/network-lock.gif)
+
+1. Every box in your group gets the same passphrase. Each box turns it into the same 128-bit key with PBKDF2.
+2. Before a message goes on the air, the box locks it with AES-GCM.
+3. A box without the passphrase still hears the radio signal, but all it gets is scrambled bytes.
+4. A box with the same key opens the message and shows it on its phones.
+
+Each locked message carries a counter, so a box ignores a recording of an old message that someone sends again.
+
 ## Three programs on one box
 
 The box holds three programs: the FreeMesh firmware, Meshtastic and MeshCore. One button switches between them, so the same hardware can also join an existing Meshtastic or MeshCore network.

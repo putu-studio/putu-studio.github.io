@@ -10,6 +10,7 @@ export default defineConfig({
   // The project page was renamed. Keep the old address working.
   redirects: {
     '/projects/lora-convoy-chat': '/projects/freemesh/',
+    '/blog/why-im-building-a-lora-chat-box': '/blog/why-we-need-a-lora-chat-box/',
   },
   markdown: {
     shikiConfig: { theme: 'github-dark-dimmed' },

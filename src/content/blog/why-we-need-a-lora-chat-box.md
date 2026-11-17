@@ -4,8 +4,9 @@ description: Why an off-grid chat box for road trips is useful, and how it works
 date: 2026-11-06
 tags: [LoRa, ESP32-S3, SX1262]
 project: freemesh
-cover: /images/diagrams/lora-cars.svg
-coverAlt: Two cars on a mountain road, linked by a LoRa radio arc between boxes on their dashboards. Phones in each car join the box's Wi-Fi.
+cover: /images/blog/lora-road.png
+hero: /images/blog/lora-road.gif
+coverAlt: Two cars on a mountain road at night. One car sends "Fuel stop ahead?", the message crosses the mountain over LoRa radio, and it appears in the other car.
 ---
 
 On mountain highways, the cell signal drops out for long stretches. When a group travels in two vehicles, there is no way to coordinate stops or warn each other about the road. FreeMesh solves this with one small box per vehicle. Each box makes a Wi-Fi network, phones open a chat page, and the box carries the messages to the other vehicle over LoRa.
