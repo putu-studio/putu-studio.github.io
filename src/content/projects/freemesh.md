@@ -7,7 +7,8 @@ status: in progress
 order: 1
 tags: [ESP32-S3, SX1262, LoRa, ESP-IDF, KiCad]
 started: 2026-10-01
-updated: 2026-11-17
+updated: 2026-11-18
+repo: https://github.com/putu-studio/FreeMesh
 logo: /images/freemesh/logo.svg
 alsoRuns: [Meshtastic, MeshCore]
 cover: /images/freemesh/freemesh-overview.png
@@ -110,4 +111,4 @@ An Android app that talks to the box over Bluetooth is in progress. It hasn't be
 
 This is a prototype. It isn't certified, and it isn't for sale. Radio rules differ by country, so check the rules where you are before you transmit.
 
-The encryption hasn't had an outside security review. The carrier board is designed but not built yet, and the source code isn't published yet. Photos and range test results will be posted soon.
+The encryption hasn't had an outside security review. The carrier board is designed but not built yet. The firmware source is on GitHub, under the MIT license. Version 0.10.0 builds but hasn't been tested on hardware yet. Photos and range test results will be posted soon.
