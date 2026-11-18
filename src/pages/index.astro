@@ -31,5 +31,6 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: SIT
 </Base>
 <style>
   .intro { padding: 20px 0 8px; }
-  .intro h1 { font-size: 2.6rem; }
+  /* The logo in the header already shows the name; the heading stays for search engines and screen readers. */
+  .intro h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
 </style>
